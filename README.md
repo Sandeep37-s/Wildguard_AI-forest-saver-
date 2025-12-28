@@ -43,8 +43,7 @@ Illegal wildlife trade and forest crimes often go unreported due to:
 ---
 
 ## 📂 Project Structure
-
-.
+'''
 ├── app.py # Telegram bot & AI logic
 ├── requirements.txt # Python dependencies
 ├── admins.json # Registered admin IDs
@@ -60,6 +59,7 @@ Illegal wildlife trade and forest crimes often go unreported due to:
 │ │ ├── style.css
 │ │ └── script.js
 └── README.md
+'''
 
 
 ---
@@ -148,5 +148,6 @@ This project is for educational and research purposes.
 License can be added later if required.
 
 “Together, we can stop illegal wildlife trade — one report at a time.” 🐅🌱
+
 
 
