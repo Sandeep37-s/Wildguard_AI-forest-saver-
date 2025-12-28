@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WildGuard AI | Intelligence & Conservation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+        }
+        
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glow-border:hover {
+            border-color: #10b981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+            transition: all 0.4s ease;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            background-clip: text;
+            /* Standard */
+            -webkit-background-clip: text;
+            /* Chrome/Safari */
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .scan-line {
+            width: 100%;
+            height: 2px;
+            background: #10b981;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 3s linear infinite;
+            opacity: 0.5;
+            box-shadow: 0 0 15px #10b981;
+        }
+        
+        @keyframes scan {
+            0% {
+                top: 0%;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+        
+        .hero-pattern {
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<script>
+    document.body.innerHTML = document.body.innerHTML.replace(/\[cite[^\]]*\]/g, "");
+</script>
+
+<body class="text-slate-200 overflow-x-hidden hero-pattern">
+
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-emerald-600 rounded-md flex items-center justify-center font-bold text-white shadow-lg shadow-emerald-900/40">W</div>
+                <span class="text-sm font-extrabold tracking-widest uppercase italic text-emerald-500">WildGuard AI</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-widest text-slate-400">
+                <a href="#home" class="hover:text-emerald-500 transition">Terminal</a>
+                <a href="#crisis" class="hover:text-emerald-500 transition">Crisis</a>
+                <a href="#solution" class="hover:text-emerald-500 transition">Solution</a>
+                <a href="#architecture" class="hover:text-emerald-500 transition">Architecture</a>
+                <a href="/login" class="px-5 py-2 border border-emerald-500/50 text-emerald-400 rounded-lg hover:bg-emerald-600 hover:text-white transition">Admin Portal</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center px-6 pt-20">
+        <div class="absolute w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[120px] -z-10"></div>
+        <div class="text-center space-y-6 max-w-4xl">
+            <span class="px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/5 text-emerald-400 text-[10px] font-bold uppercase tracking-[0.2em]">CUJ Hackathon 2025 // Cyber Intelligence</span>
+            <h1 class="text-6xl md:text-8xl font-extrabold text-gradient tracking-tighter leading-[0.95]">
+                Stop Illegal Trade. <br> <span class="text-emerald-600 font-black">Protect Wildlife.</span>
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+                Anonymous Wildlife Crime Reporting Chatbot. Empowering citizens to turn fear into action with AI-driven cyber intelligence[cite: 2, 3, 17].
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+                <a href="/login" class="px-10 py-4 bg-emerald-600 rounded-xl font-bold hover:bg-emerald-500 transition shadow-xl shadow-emerald-900/20">Access Dashboard</a>
+                <a href="#architecture" class="px-10 py-4 glass rounded-xl font-bold hover:bg-white/5 transition">System Architecture</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="crisis" class="py-24 max-w-7xl mx-auto px-6">
+        <h2 class="text-center text-4xl font-extrabold mb-16 text-gradient">The Crisis We Address [cite: 6]</h2>
+        <div class="grid md:grid-cols-4 gap-4">
+            <div class="glass p-8 rounded-3xl glow-border">
+                <div class="text-emerald-500 text-2xl mb-4 font-bold">⚠️</div>
+                <h3 class="text-lg font-bold mb-3">Fear of Retaliation</h3>
+                <p class="text-sm text-slate-400">Citizens avoid reporting due to fear of criminals and violent backlash[cite: 8, 9].</p>
+            </div>
+            <div class="glass p-8 rounded-3xl glow-border">
+                <div class="text-emerald-500 text-2xl mb-4 font-bold">🔍</div>
+                <h3 class="text-lg font-bold mb-3">Lack of Awareness</h3>
+                <p class="text-sm text-slate-400">Most people are unaware of how or where to report wildlife crimes effectively[cite: 10, 11].</p>
+            </div>
+            <div class="glass p-8 rounded-3xl glow-border">
+                <div class="text-emerald-500 text-2xl mb-4 font-bold">🐢</div>
+                <h3 class="text-lg font-bold mb-3">Bureaucratic Lag</h3>
+                <p class="text-sm text-slate-400">Current reporting processes are slow, bureaucratic, and over-complicated[cite: 12, 13].</p>
+            </div>
+            <div class="glass p-8 rounded-3xl glow-border">
+                <div class="text-emerald-500 text-2xl mb-4 font-bold">⏳</div>
+                <h3 class="text-lg font-bold mb-3">Delayed Action</h3>
+                <p class="text-sm text-slate-400">Incomplete data leads to delayed rescue operations by authorities[cite: 14, 15].</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="architecture" class="py-24 relative overflow-hidden bg-slate-900/30">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold mb-4 text-gradient">System Architecture [cite: 25]</h2>
+            <p class="text-slate-500 mb-16 uppercase text-[10px] tracking-widest">End-to-End Secure Intelligence Pipeline</p>
+
+
+            <div class="grid md:grid-cols-3 gap-8 relative mt-12">
+                <div class="glass p-6 rounded-2xl border-emerald-500/20">
+                    <div class="text-xs font-bold text-emerald-500 mb-2 uppercase tracking-tighter">Conversational Layer</div>
+                    <h4 class="font-bold mb-2">Omni-Channel Access</h4>
+                    <p class="text-[11px] text-slate-400">OpenRouter LLM + LangChain + RASA available via Web, WhatsApp, and Telegram[cite: 27, 28].</p>
+                </div>
+                <div class="glass p-6 rounded-2xl border-emerald-500/20 relative overflow-hidden">
+                    <div class="scan-line"></div>
+                    <div class="text-xs font-bold text-emerald-500 mb-2 uppercase tracking-tighter">AI Processing</div>
+                    <h4 class="font-bold mb-2">Automated Analysis</h4>
+                    <p class="text-[11px] text-slate-400">Computer Vision threat analysis + automated IP masking & metadata removal[cite: 29, 30].</p>
+                </div>
+                <div class="glass p-6 rounded-2xl border-emerald-500/20">
+                    <div class="text-xs font-bold text-emerald-500 mb-2 uppercase tracking-tighter">Infrastructure</div>
+                    <h4 class="font-bold mb-2">Encrypted Storage</h4>
+                    <p class="text-[11px] text-slate-400">SQLite/MongoDB evidence vault with real-time Tailwind-based authority dashboard[cite: 31, 33, 35].</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 max-w-7xl mx-auto px-6">
+        <h2 class="text-center text-3xl font-bold mb-12">The WildGuard Advantage [cite: 37]</h2>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left glass rounded-3xl overflow-hidden">
+                <thead class="bg-emerald-600/10 text-emerald-400 text-xs uppercase font-bold tracking-widest">
+                    <tr>
+                        <th class="p-6">Current Challenge [cite: 38]</th>
+                        <th class="p-6">WildGuard Advantage [cite: 39]</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm text-slate-300 divide-y divide-white/5">
+                    <tr>
+                        <td class="p-6">Lack of secure reporting</td>
+                        <td class="p-6 text-emerald-400">True anonymous chatbot protocol</td>
+                    </tr>
+                    <tr>
+                        <td class="p-6">Complex, bureaucratic interfaces</td>
+                        <td class="p-6 text-emerald-400">Simple, human conversational UI</td>
+                    </tr>
+                    <tr>
+                        <td class="p-6">Manual data handling</td>
+                        <td class="p-6 text-emerald-400">Automated AI detection & encryption</td>
+                    </tr>
+                    <tr>
+                        <td class="p-6">Delayed authority alerts</td>
+                        <td class="p-6 text-emerald-400">Real-time dashboard notifications</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="py-24 max-w-5xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-12">The Road Ahead [cite: 53]</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-[10px] font-bold uppercase tracking-widest">
+            <div class="glass py-6 rounded-xl border-emerald-500/20">Omni-Platform Expansion</div>
+            <div class="glass py-6 rounded-xl border-emerald-500/20">HTTPS Evidence Inspection</div>
+            <div class="glass py-6 rounded-xl border-emerald-500/20">In-House Model Training</div>
+            <div class="glass py-6 rounded-xl border-emerald-500/20">Predictive Crime Mapping</div>
+        </div>
+    </section>
+
+    <section class="py-24 max-w-5xl mx-auto px-6">
+        <h2 class="text-center text-2xl font-bold mb-12 uppercase tracking-tighter italic text-emerald-500">Team CyberSpecies [cite: 65]</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="glass py-6 text-center rounded-2xl text-xs font-bold uppercase tracking-widest text-slate-400">Sehaj Kashyap</div>
+            <div class="glass py-6 text-center rounded-2xl text-xs font-bold uppercase tracking-widest text-slate-400">Bhumika Koushal</div>
+            <div class="glass py-6 text-center rounded-2xl text-xs font-bold uppercase tracking-widest text-slate-400">Krishika Gupta</div>
+            <div class="glass py-6 text-center rounded-2xl text-xs font-bold uppercase tracking-widest text-slate-400 font-black text-emerald-400">Sandeep Kumar</div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/5 text-center bg-slate-950">
+        <p class="text-emerald-500 font-bold mb-4 tracking-tight">"Together, we can stop illegal wildlife trade — one report at a time." [cite: 63]</p>
+        <p class="text-[10px] text-slate-600 uppercase tracking-[0.5em]">&copy; 2025 WildGuard AI // CUJ Hackathon Project</p>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

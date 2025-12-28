@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Police Security Bot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes pulse-glow {
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+            }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 min-h-screen">
+
+    <!-- Auth check -->
+    <script>
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            window.location.href = '/login';
+        }
+    </script>
+
+    <!-- Sidebar -->
+    <div class="fixed left-0 top-0 h-full w-64 glass p-6 z-40">
+        <div class="flex items-center space-x-3 mb-12">
+            <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center pulse-glow">
+                <span class="text-white font-bold">🛡️</span>
+            </div>
+            <div>
+                <h1 class="text-white font-bold text-lg">Security Bot</h1>
+                <p class="text-blue-200 text-xs">Admin Panel</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-64 p-8">
+
+        <h2 class="text-3xl font-bold text-white mb-8">
+            Welcome Back, <span id="welcomeName">Admin</span> 👋
+        </h2>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+
+            <!-- ✅ EDIT: add IDs + cursor-pointer -->
+            <div id="card-total" class="glass rounded-2xl p-6 slide-in cursor-pointer">
+                <p class="text-blue-200 text-sm mb-1">Total Messages</p>
+                <p class="text-white text-3xl font-bold" id="totalMessages">0</p>
+            </div>
+
+            <div id="card-suspicious" class="glass rounded-2xl p-6 slide-in cursor-pointer">
+                <p class="text-blue-200 text-sm mb-1">Suspicious</p>
+                <p class="text-white text-3xl font-bold" id="suspiciousMessages">0</p>
+            </div>
+
+            <div id="card-safe" class="glass rounded-2xl p-6 slide-in cursor-pointer">
+                <p class="text-blue-200 text-sm mb-1">Safe Messages</p>
+                <p class="text-white text-3xl font-bold" id="safeMessages">0</p>
+            </div>
+
+        </div>
+
+        <!-- Messages -->
+        <div class="glass rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-white text-xl font-bold">Recent Messages</h3>
+                <button onclick="loadMessages()" class="px-4 py-2 bg-blue-600 rounded-lg">
+                Refresh
+            </button>
+            </div>
+            <div id="messagesList" class="space-y-4"></div>
+        </div>
+
+    </div>
+
+    <!-- ================= SCRIPT ================= -->
+    <script>
+        const username = sessionStorage.getItem('username') || 'Admin';
+        document.getElementById('welcomeName').textContent = username;
+
+        // ✅ EDIT: unified loader with filter
+        async function loadMessages(filter = null) {
+            let url = "/get_messages";
+            if (filter) url += `?label=${filter}`;
+
+            const res = await fetch(url);
+            const data = await res.json();
+
+            document.getElementById('totalMessages').textContent = data.stats.total;
+            document.getElementById('suspiciousMessages').textContent = data.stats.suspicious;
+            document.getElementById('safeMessages').textContent = data.stats.safe;
+
+            const messagesList = document.getElementById('messagesList');
+
+            messagesList.innerHTML = data.messages.map(msg => `
+            <div class="glass rounded-xl p-4 ${
+                msg.label === 'suspicious'
+                    ? 'border-l-4 border-red-500'
+                    : 'border-l-4 border-green-500'
+            }">
+                <p class="text-white mb-2">${msg.text}</p>
+                <p class="text-blue-200 text-sm">From: ${msg.sender}</p>
+            </div>
+        `).join('');
+        }
+
+        // ✅ EDIT: click handlers
+        document.getElementById("card-total").onclick = () => loadMessages();
+        document.getElementById("card-suspicious").onclick = () => loadMessages("suspicious");
+        document.getElementById("card-safe").onclick = () => loadMessages("safe");
+
+        // ❌ REMOVED auto-refresh (it was breaking filter)
+        loadMessages();
+    </script>
+
+</body>
+
+</html>
