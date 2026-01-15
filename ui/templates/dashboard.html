@@ -1,24 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Police Security Bot</title>
+    <title>WildGuard AI | Security Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        @keyframes pulse-glow {
-            0%,
-            100% {
-                box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+        }
+        
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glow-border:hover {
+            border-color: #10b981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+            transition: all 0.4s ease;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .scan-line {
+            width: 100%;
+            height: 2px;
+            background: #10b981;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 3s linear infinite;
+            opacity: 0.5;
+            box-shadow: 0 0 15px #10b981;
+        }
+        
+        @keyframes scan {
+            0% {
+                top: 0%;
             }
-            50% {
-                box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+            100% {
+                top: 100%;
             }
         }
         
-        .pulse-glow {
-            animation: pulse-glow 2s infinite;
+        .hero-pattern {
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-size: 32px 32px;
         }
         
         @keyframes slideIn {
@@ -36,15 +73,23 @@
             animation: slideIn 0.5s ease-out forwards;
         }
         
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        @keyframes pulse-glow {
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(16, 185, 129, 0.5);
+            }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
         }
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 min-h-screen">
+<body class="text-slate-200 overflow-x-hidden hero-pattern">
 
     <!-- Auth check -->
     <script>
@@ -53,97 +98,167 @@
         }
     </script>
 
-    <!-- Sidebar -->
-    <div class="fixed left-0 top-0 h-full w-64 glass p-6 z-40">
-        <div class="flex items-center space-x-3 mb-12">
-            <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center pulse-glow">
-                <span class="text-white font-bold">🛡️</span>
+    <!-- Top Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-emerald-600 rounded-md flex items-center justify-center font-bold text-white shadow-lg shadow-emerald-900/40 pulse-glow">W</div>
+                <span class="text-sm font-extrabold tracking-widest uppercase italic text-emerald-500">WildGuard AI</span>
             </div>
-            <div>
-                <h1 class="text-white font-bold text-lg">Security Bot</h1>
-                <p class="text-blue-200 text-xs">Admin Panel</p>
+            <div class="flex items-center space-x-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-slate-400">
+                    Welcome, <span id="welcomeName" class="text-emerald-400">Admin</span>
+                </span>
+                <a href="/" class="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-emerald-500 transition">Home</a>
+                <button onclick="sessionStorage.clear(); window.location.href='/login'" class="px-4 py-2 border border-red-500/50 text-red-400 rounded-lg hover:bg-red-600 hover:text-white transition text-xs font-bold uppercase tracking-widest">Logout</button>
             </div>
         </div>
-    </div>
+    </nav>
 
     <!-- Main Content -->
-    <div class="ml-64 p-8">
+    <div class="max-w-7xl mx-auto px-6 pt-32 pb-20">
 
-        <h2 class="text-3xl font-bold text-white mb-8">
-            Welcome Back, <span id="welcomeName">Admin</span> 👋
-        </h2>
+        <!-- Header Section -->
+        <div class="mb-12">
+            <div class="absolute w-[400px] h-[400px] bg-emerald-600/10 rounded-full blur-[120px] -z-10 right-0"></div>
+            <span class="px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/5 text-emerald-400 text-[10px] font-bold uppercase tracking-[0.2em] inline-block mb-4">Intelligence Dashboard</span>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-gradient tracking-tighter leading-tight mb-4">
+                Security <span class="text-emerald-600">Command Center</span>
+            </h1>
+            <p class="text-slate-400 text-lg max-w-2xl font-light">
+                Real-time monitoring and analysis of wildlife crime reports
+            </p>
+        </div>
 
         <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
-            <!-- ✅ EDIT: add IDs + cursor-pointer -->
-            <div id="card-total" class="glass rounded-2xl p-6 slide-in cursor-pointer">
-                <p class="text-blue-200 text-sm mb-1">Total Messages</p>
-                <p class="text-white text-3xl font-bold" id="totalMessages">0</p>
+            <div id="card-total" class="glass rounded-2xl p-8 slide-in cursor-pointer glow-border relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative">
+                    <div class="flex items-center justify-between mb-4">
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">Total Reports</p>
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <p class="text-white text-5xl font-black mb-2" id="totalMessages">0</p>
+                    <p class="text-emerald-400 text-xs font-bold uppercase tracking-wider">All Messages</p>
+                </div>
             </div>
 
-            <div id="card-suspicious" class="glass rounded-2xl p-6 slide-in cursor-pointer">
-                <p class="text-blue-200 text-sm mb-1">Suspicious</p>
-                <p class="text-white text-3xl font-bold" id="suspiciousMessages">0</p>
+            <div id="card-suspicious" class="glass rounded-2xl p-8 slide-in cursor-pointer glow-border relative overflow-hidden group border-red-500/20">
+                <div class="scan-line bg-red-500"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-red-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative">
+                    <div class="flex items-center justify-between mb-4">
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">Critical Alerts</p>
+                        <span class="text-2xl">⚠️</span>
+                    </div>
+                    <p class="text-white text-5xl font-black mb-2" id="suspiciousMessages">0</p>
+                    <p class="text-red-400 text-xs font-bold uppercase tracking-wider">Suspicious Activity</p>
+                </div>
             </div>
 
-            <div id="card-safe" class="glass rounded-2xl p-6 slide-in cursor-pointer">
-                <p class="text-blue-200 text-sm mb-1">Safe Messages</p>
-                <p class="text-white text-3xl font-bold" id="safeMessages">0</p>
+            <div id="card-safe" class="glass rounded-2xl p-8 slide-in cursor-pointer glow-border relative overflow-hidden group border-emerald-500/20">
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative">
+                    <div class="flex items-center justify-between mb-4">
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">Verified Safe</p>
+                        <span class="text-2xl">✅</span>
+                    </div>
+                    <p class="text-white text-5xl font-black mb-2" id="safeMessages">0</p>
+                    <p class="text-emerald-400 text-xs font-bold uppercase tracking-wider">No Threats Detected</p>
+                </div>
             </div>
 
         </div>
 
-        <!-- Messages -->
-        <div class="glass rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-6">
-                <h3 class="text-white text-xl font-bold">Recent Messages</h3>
-                <button onclick="loadMessages()" class="px-4 py-2 bg-blue-600 rounded-lg">
-                Refresh
-            </button>
+        <!-- Messages Section -->
+        <div class="glass rounded-3xl p-8">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-gradient mb-1">Intelligence Feed</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest">Real-Time Report Stream</p>
+                </div>
+                <button onclick="loadMessages()" class="px-6 py-3 bg-emerald-600 rounded-xl font-bold hover:bg-emerald-500 transition shadow-xl shadow-emerald-900/20 text-sm uppercase tracking-widest">
+                    🔄 Refresh Data
+                </button>
             </div>
+
             <div id="messagesList" class="space-y-4"></div>
+
+            <div id="emptyState" class="hidden text-center py-16">
+                <div class="text-6xl mb-4">📭</div>
+                <p class="text-slate-400 text-sm font-bold uppercase tracking-widest">No Reports Available</p>
+            </div>
         </div>
 
     </div>
 
-    <!-- ================= SCRIPT ================= -->
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/5 text-center bg-slate-950/50">
+        <p class="text-emerald-500 font-bold mb-2 tracking-tight text-sm">"Protecting Wildlife Through Intelligence"</p>
+        <p class="text-[10px] text-slate-600 uppercase tracking-[0.5em]">&copy; 2025 WildGuard AI // Secure Dashboard</p>
+    </footer>
+
+    <!-- Script -->
     <script>
         const username = sessionStorage.getItem('username') || 'Admin';
         document.getElementById('welcomeName').textContent = username;
 
-        // ✅ EDIT: unified loader with filter
         async function loadMessages(filter = null) {
             let url = "/get_messages";
             if (filter) url += `?label=${filter}`;
 
-            const res = await fetch(url);
-            const data = await res.json();
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
 
-            document.getElementById('totalMessages').textContent = data.stats.total;
-            document.getElementById('suspiciousMessages').textContent = data.stats.suspicious;
-            document.getElementById('safeMessages').textContent = data.stats.safe;
+                document.getElementById('totalMessages').textContent = data.stats.total;
+                document.getElementById('suspiciousMessages').textContent = data.stats.suspicious;
+                document.getElementById('safeMessages').textContent = data.stats.safe;
 
-            const messagesList = document.getElementById('messagesList');
+                const messagesList = document.getElementById('messagesList');
+                const emptyState = document.getElementById('emptyState');
 
-            messagesList.innerHTML = data.messages.map(msg => `
-            <div class="glass rounded-xl p-4 ${
-                msg.label === 'suspicious'
-                    ? 'border-l-4 border-red-500'
-                    : 'border-l-4 border-green-500'
-            }">
-                <p class="text-white mb-2">${msg.text}</p>
-                <p class="text-blue-200 text-sm">From: ${msg.sender}</p>
-            </div>
-        `).join('');
+                if (data.messages.length === 0) {
+                    messagesList.innerHTML = '';
+                    emptyState.classList.remove('hidden');
+                } else {
+                    emptyState.classList.add('hidden');
+                    messagesList.innerHTML = data.messages.map(msg => `
+                        <div class="glass rounded-2xl p-6 glow-border ${
+                            msg.label === 'suspicious'
+                                ? 'border-l-4 border-red-500 bg-red-500/5'
+                                : 'border-l-4 border-emerald-500 bg-emerald-500/5'
+                        } hover:scale-[1.01] transition-transform">
+                            <div class="flex items-start justify-between mb-3">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${
+                                    msg.label === 'suspicious'
+                                        ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                                        : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                                }">
+                                    ${msg.label === 'suspicious' ? '⚠️ Critical' : '✅ Safe'}
+                                </span>
+                                <span class="text-[10px] text-slate-500 uppercase tracking-widest">${new Date().toLocaleDateString()}</span>
+                            </div>
+                            <p class="text-white mb-4 leading-relaxed">${msg.text}</p>
+                            <div class="flex items-center justify-between pt-3 border-t border-white/5">
+                                <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">
+                                    📍 From: <span class="text-emerald-400">${msg.sender}</span>
+                                </p>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading messages:', error);
+            }
         }
 
-        // ✅ EDIT: click handlers
         document.getElementById("card-total").onclick = () => loadMessages();
         document.getElementById("card-suspicious").onclick = () => loadMessages("suspicious");
         document.getElementById("card-safe").onclick = () => loadMessages("safe");
 
-        // ❌ REMOVED auto-refresh (it was breaking filter)
         loadMessages();
     </script>
 
